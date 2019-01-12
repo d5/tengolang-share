@@ -1,0 +1,92 @@
+/*
+    Tengo Language
+*/
+
+// variable definition and primitive types
+a := "foo"   // string
+b := -19.84  // floating point
+c := 5       // integer
+d := true    // boolean
+e := '九'    // char
+
+// assignment
+b = "bar"    // can assign value of different type
+
+// map and array
+m := {a: {b: {c: [1, 2, 3]}}}
+two := m.a.b.c[1] == m["a"]["b"]["c"][1]
+m.d = "dee"
+m.a.b.e = "eee"
+
+// slicing
+str := "hello world"
+substr := str[1:5]    // "ello"
+arr := [1, 2, 3, 4, 5]
+subarr := arr[2:4]    // [3, 4]
+
+// functions
+each := func(seq, fn) {
+    // array iteration
+    for x in seq {
+        fn(x)
+    }
+}
+
+sum := func(seq) {
+   s := 0
+   each(seq, func(x) {
+       s += x    // closure: capturing variable 's'
+   })
+   return s
+}
+
+six := sum([1, 2, 3]) // array: [1, 2, 3]
+
+map_to_array := func(m) {
+    arr := []
+    // map iteration
+    for key, value in m {
+        arr = append(arr, key, value)  // builtin function 'append'
+    }
+    return arr
+}
+
+m_arr := map_to_array(m)
+m_arr_len := len(m_arr)   // builtin function 'len'
+
+// recursion and tail-call optimization
+fib := func(x, a, b) {
+	if x == 0 {
+		return a
+	} else if x == 1 {
+		return b
+	} else {
+		return fib(x-1, b, a+b)
+	}
+}
+fib35 := fib(35, 0, 1) // under 0.1ms
+
+// type coercion
+s1 := string(1984)  // "1984"
+i2 := int("-999")   // -999
+f3 := float(-51)    // -51.0
+b4 := bool(1)       // true
+c5 := char("X")     // 'X'
+
+
+// if statement
+three_is := ""
+if three := 3; three > 2 {  // optional init statement
+    three_is = "> 2"
+} else if three == 2 {
+    three_is = "= 2"
+} else {
+    three_is = "< 2"
+}
+
+// for statement
+seven := 0
+arr2 := [1, 2, 3, 1]
+for i:=0; i<len(arr2); i++ {
+    seven += arr[i]
+}
