@@ -1,0 +1,5 @@
+adder := func(base) {
+    return func(x) { return base + x }	// capturing 'base'
+}
+add5 := adder(5)
+nine := add5(4)		// nine
