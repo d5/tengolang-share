@@ -1,0 +1,14 @@
+a := 1984 		// int
+b := "aomame"		// string
+c := -9.22		// float
+d := true		// bool
+e := '九'		// char
+f := [1, false, "foo"]	// array
+g := {			// map
+    h: 439,
+    i: 12.34,
+    j: [0, 9, false]
+}
+k := func(l, m) {	// function
+    return l + m
+}
