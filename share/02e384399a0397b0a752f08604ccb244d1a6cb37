@@ -1,0 +1,5 @@
+/*
+  multi-line block comments
+*/
+
+a := 5 // line comments
