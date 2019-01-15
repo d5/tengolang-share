@@ -1,0 +1,10 @@
+// tail-call optimization: faster and enables loop via recursion
+count_odds := func(n, c) {
+	if n == 0 {
+		return c
+	} else if n % 2 == 1 {
+	    c++
+	}
+	return count_odds(n-1, c)
+}
+num_odds := count_odds(100000, 0)
