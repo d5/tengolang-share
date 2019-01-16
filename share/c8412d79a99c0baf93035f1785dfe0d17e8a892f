@@ -1,0 +1,5 @@
+err1 := error("oops")   // error with string value
+err2 := error(1999)     // error with int value
+if is_error(err1) {     // 'is_error' builtin function
+    err_val := err1.value   // use 'value' selector to read underlying value
+}
