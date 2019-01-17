@@ -1,0 +1,5 @@
+mod1 := import("./mod1") // assuming mod1.tengo file exists in the current directory
+                         // same as 'import("./mod1.tengo")' or 'import("mod1")'
+mod1.func1(a)            // module function
+a += mod1.foo            // module variable
+//mod1.foo = 5           // error: module variables are read-only
