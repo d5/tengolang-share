@@ -1,0 +1,13 @@
+/* The Tengo Language */
+
+each := func(seq, fn) {
+    for x in seq { fn(x) }
+}
+
+sum := func(init, seq) {
+    each(seq, func(x) { init += x })
+    return init
+}
+
+n := sum(0, [1, 2, 3])   // == 6
+s := sum("", [1, 2, 3])  // == "123"
