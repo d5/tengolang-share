@@ -1,0 +1,6 @@
+a := true ? 1 : -1    // a == 1
+
+min := func(a, b) {
+    return a < b ? a : b
+}
+b := min(5, 10)       // b == 5
