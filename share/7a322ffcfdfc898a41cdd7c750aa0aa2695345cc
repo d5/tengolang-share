@@ -1,0 +1,7 @@
+res := func() {
+    sum := func(a) {
+        return a == 0 ? 0 : a + sum(a-1)  // error
+    }
+
+    return sum(10)
+}()
