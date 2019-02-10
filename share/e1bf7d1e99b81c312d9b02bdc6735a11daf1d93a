@@ -1,0 +1,3 @@
+wrapper := func() { inner := func(x) { if (x == 0) { return 0 } else { return inner(x - 1) } }; return inner(1) }
+
+a := wrapper()
