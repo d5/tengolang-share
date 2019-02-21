@@ -1,0 +1,4 @@
+export func(ctx) {
+    ctx.set_status(240)
+    ctx.write(sprintf("v=%v", ctx.get("k2")))
+}
