@@ -1,0 +1,25 @@
+rand := import("rand")
+
+cs := "0123456789abcdefghijklmnopqrstuvwxyz"
+
+rand_str := func(l) {
+    t := ""
+    for i:=0; i<l; i++ { t += cs[rand.intn(len(cs))] }
+    return t
+}
+
+export func(ctx) {
+    ctx.set_status(200)
+
+    ctx.set_header("Content-Type", "application/json")
+
+    ctx.write(to_json({
+        resolvedVariables: [
+            {
+                variableId: "RandomToken",
+                value: rand_str()
+            }
+        ]
+    }))
+}
+
