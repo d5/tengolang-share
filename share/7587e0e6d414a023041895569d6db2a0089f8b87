@@ -1,0 +1,15 @@
+export func(ctx) {
+    ctx.set_status(200)
+    ctx.set_header("Content-Type", "text/plain")
+    ctx.write(sprintf("Req Body:\n%s\n\n", ctx.req_body))
+    ctx.write("Query Params:\n")
+    for k, v in ctx.query {
+        ctx.write(sprintf("%s = %s\n", k, v))
+    }
+    ctx.write("\n")
+    ctx.write("Request Header:\n")
+    for k, v in ctx.req_header {
+        ctx.write(sprintf("%s = %s\n", k, v))
+    }
+    ctx.write("\n")
+}
