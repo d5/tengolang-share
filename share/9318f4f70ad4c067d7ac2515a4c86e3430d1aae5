@@ -1,0 +1,22 @@
+// Refernece Counting
+
+a := {              // 'a': cnt=1
+    b: {
+        c: {
+            d: 10
+        }
+    }
+}
+
+a2 := a             // 'a': cnt=2
+
+a.b.c.d = 20        // obvious case: 'a' is the top-level object
+
+ab := a.b           // make a reference copy: ab => a
+ab2 := ab           // another reference copy: ab2 => a
+
+abc := ab.c         // abc => a
+abc.e = [1,2,3]     // 'a' shuold be updated too (but not obvious)
+
+a = 5               // should update 'ab', 'ab2', 'abc' as they're pointing to old 'a'
+                    // 'a': cnt=1 (by 'a2')
