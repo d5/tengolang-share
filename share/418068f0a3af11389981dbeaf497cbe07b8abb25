@@ -1,0 +1,15 @@
+/*
+    Tengo Language
+*/
+
+// module import
+fmt := import("fmt")
+
+// variable definition and primitive types
+a := "foo"   // string
+b := -19.84  // floating point
+c := 5       // integer
+d := true    // boolean
+e := '九'    // char
+
+    fmt.println("Test: ", e)
