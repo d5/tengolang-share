@@ -1,0 +1,29 @@
+fmt := import("fmt")
+
+new_class := func(name, body) {
+    // return a constructor
+    return func(args) {
+        self := {}
+        initFn := undefined
+        for k, v in body {
+            if k == "init" {
+                initFn = v
+            } else {
+                if type_name(v) == "compiled-function" {
+                    self[k] = func(args) { return v(self, args) }
+                }
+            }
+        }
+        if(initFn) { initFn(self, args) }
+        return self
+    }
+}
+
+test := new_class("test", {
+    init: func(self, args) { self._x = args },
+    getX: func(self) { return self._x }
+})
+
+i := test([1,2,3])
+
+fmt.println(i)
