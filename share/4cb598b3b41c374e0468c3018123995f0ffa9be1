@@ -1,0 +1,37 @@
+/*
+    Tengo Language
+*/
+
+// module import
+fmt := import("fmt")
+
+
+
+taskResults := [
+    {
+        "answer": "yes",
+        "time" : 1.0
+    },
+    {
+        "answer": "yes",
+        "time" : 0.1
+    },
+    {
+        "answer": "yes",
+        "time" : 1.0
+    }
+]
+
+filter := func(list, cond){
+    res := []
+    for item in list{
+        if cond(item){
+            res = append(res, item)
+        }
+    }
+    return res
+}
+
+fmt.println(filter(taskResults, func(taskResult){
+    return taskResult[`time`]>0.5
+}))
