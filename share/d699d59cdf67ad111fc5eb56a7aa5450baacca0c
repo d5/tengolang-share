@@ -1,0 +1,16 @@
+/*
+    Tengo Language
+*/
+
+// module import
+fmt := import("fmt")
+
+update := func(... o){
+    fmt.println(o)
+}
+
+update()
+update(1.1)
+update("1.2")
+update({version: 1.3})
+update({version: "1.4"})
