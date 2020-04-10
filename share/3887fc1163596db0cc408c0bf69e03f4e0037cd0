@@ -1,0 +1,9 @@
+fmt:=import("fmt")
+ss:=[]
+for i, v in [1, 2, 3] {       // array: index and element
+  // 'i' is index
+  // 'v' is value
+  fmt.println(i)
+  ss[i]=12
+}
+fmt.println(ss)
