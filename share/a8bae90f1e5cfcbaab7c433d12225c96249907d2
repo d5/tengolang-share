@@ -1,0 +1,33 @@
+/* The Tengo Language */
+
+fmt := import("fmt")
+times := import("times")
+
+
+GetDWFirstDay := func(t) {
+    base := times.parse("2006-01-02", "2020-04-06")
+    gap := int(times.sub(t, base)/1e9)
+    dwBase :=  times.date(times.time_year(t), times.time_month(t), times.time_day(t), 0, 0, 0, 0)
+    if gap > 0 && gap%(86400*14) >= 86400 * 7 {
+        dwBase = times.add_date(dwBase, 0, 0, -7)
+    }
+    if gap < 0 && gap%(86400*14)*-1 <  86400 * 7 {
+    	dwBase = times.add_date(dwBase, 0, 0, -7)
+    }
+
+    for times.time_weekday(dwBase) != 1 {
+    	dwBase = times.add_date(dwBase, 0, 0, -1)
+    }
+    return times.time_unix(dwBase)
+}
+
+b := times.parse("2006-01-02", "2020-04-20")
+fmt.println(b)
+fmt.println(times.time_unix(b))
+
+now := times.now()
+fmt.println(now)
+fmt.println(times.sub(now, b)/1e9)
+
+d := GetDWFirstDay(b)
+fmt.println(d)
