@@ -1,0 +1,7 @@
+/* The Tengo Language */
+
+fmt := import("fmt")
+
+
+
+fmt.println("helloworld")   // "6"
