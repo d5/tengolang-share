@@ -1,0 +1,4 @@
+object := {}
+object.error = "an error" // Parse Error: expected selector, found 'error'
+object.in = true // Parse Error: expected selector, found 'in'
+object.export = "ok"  // Parse Error: expected selector, found 'export'
