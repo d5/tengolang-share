@@ -1,0 +1,6 @@
+fmt := import("fmt")
+text := import("text")
+u := "https://k3y8c8f9.ssl.hwcdn.net/vra/hugethumbs/vra0053_dianagrace_180-c1110x555.jpg"
+r := text.re_find(`^(https?:\/\/k3y8c8f9\.ssl\.hwcdn\.net\/vra\/)(?:largethumbs|hugethumbs|rollover_large)(\/.+)-c\d{3,4}x\d{3,4}(\.\w{3,4})$`, u)
+
+fmt.println(r)
