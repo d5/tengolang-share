@@ -1,0 +1,12 @@
+json := import("json")
+fmt := import("fmt")
+j :=
+`{
+    "year": "2020",
+    "sexial":"man"
+}`
+// fmt.println(j)
+obj := json.decode(j)
+obj.year = "2019"
+t := json.encode(obj)
+fmt.println(t)
