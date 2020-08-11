@@ -1,0 +1,17 @@
+/* The Tengo Language */
+
+fmt := import("fmt")
+
+visitedPartners := ["1", "69519","3"]
+
+result := ""
+for partner in visitedPartners{
+    if partner == "69519" {
+        result = partner
+    }
+}
+if result != "" {
+    fmt.println(result)
+}else {
+    fmt.println("nil")
+}
