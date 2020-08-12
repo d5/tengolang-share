@@ -1,0 +1,21 @@
+args := {
+    "workingReplicas": 550,
+    "resourceUsageRatio": 0.7
+}
+
+
+math := import("math")
+workingReplicas := args["workingReplicas"]
+resourceUsageRatio := args["resourceUsageRatio"]
+
+idleReservePct := math.pow(float(workingReplicas), -0.35) * 190
+idleReserveThreshold := idleReservePct * float(workingReplicas) / 100
+if resourceUsageRatio > 0.95 {
+    idleReserveThreshold = 0
+} else if resourceUsageRatio > 0.8 {
+    idleReserveThreshold = idleReserveThreshold * (1 - (resourceUsageRatio - 0.8)/0.15)
+}
+idleToleranceThreshold := idleReserveThreshold * 2
+
+fmt := import("fmt")
+fmt.println(idleReserveThreshold)
