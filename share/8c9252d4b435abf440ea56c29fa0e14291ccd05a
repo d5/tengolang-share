@@ -1,0 +1,26 @@
+each := func(seq, fn) {
+    for x in seq { fn(x) }
+}
+
+sum := 0
+mul := 1
+
+a := 0
+b := 3
+c := 5
+d := 10
+
+e := {
+    "name": "KRV"
+}
+
+each([a, b, c, d], func(x) {
+	sum += x
+	mul *= x
+})
+
+e.name = "Sample"
+
+fmt := import("fmt")
+
+fmt.println(e.name)
