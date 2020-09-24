@@ -1,0 +1,89 @@
+//
+// Generic structure:
+//   username
+//   age
+//
+fmt := import("fmt")
+
+conversions := {}
+
+
+conversions.v1alpha1 = {
+    from: func(resource) {
+        return {
+            spec: {
+                username: resource.spec.name,
+                age: 42
+            },
+            subresources: resource.subresources,
+            attributes: resource.attributes
+        }
+    },
+    to: func(resource) {
+        return {
+            spec: {
+                name: resource.spec.username
+            },
+            subresources: resource.subresources,
+            attributes: resource.attributes
+        }
+    }
+}
+
+conversions.v1 = {
+    from: func(resource) {
+        return {
+            spec: {
+                username: resource.spec.username,
+                age: resource.spec.age
+            },
+            subresources: resource.subresources,
+            attributes: resource.attributes
+        }
+    },
+    to: func(resource) {
+        return {
+            spec: {
+                username: resource.spec.username,
+                age: resource.spec.age
+            },
+            subresources: resource.subresources,
+            attributes: resource.attributes
+        }
+    }
+}
+
+
+convert := func(from, to, resource) {
+    generic := (conversions[from].from)(resource);
+    return (conversions[to].to)(generic);
+}
+
+// TEST IT OUT
+sample_v1alpha1 := {
+    spec: {
+        "name": "fred"
+    },
+    attributes: {
+        foo: "bar"
+    },
+    subresources: []
+}
+
+sample_v1 := {
+    spec: {
+        "username": "dave",
+        "age": 21
+    },
+    attributes: {
+        foo: "bar"
+    },
+    subresources: []
+}
+
+
+fmt.println("v1alpha1 -> v1: ", convert("v1alpha1", "v1", sample_v1alpha1));
+fmt.println("v1 -> v1alpha1: ", convert("v1", "v1alpha1", sample_v1));
+
+
+
